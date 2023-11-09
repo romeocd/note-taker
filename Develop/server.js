@@ -28,3 +28,19 @@ app.get('/api/notes', (req, res) => {
     }
   });
 
+// POST /api/notes route to add new notes
+app.post('/api/notes', (req, res) => {
+    try {
+      const newNote = req.body;
+      newNote.id = uuidv4();
+  
+      db.push(newNote);
+  
+      fs.writeFileSync('./db/db.json', JSON.stringify(db));
+  
+      res.json(newNote);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
