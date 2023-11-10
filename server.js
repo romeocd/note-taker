@@ -13,7 +13,7 @@ const db = require('./db/db.json')
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // GET /api/notes route
