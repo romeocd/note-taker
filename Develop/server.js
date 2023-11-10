@@ -58,3 +58,17 @@ app.delete('/api/notes/:id', (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+// GET route for notes.html
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+// GET route for index.html
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
+
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT}`)
+);
