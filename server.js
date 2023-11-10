@@ -13,7 +13,7 @@ const db = require('./db/db.json')
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
-app.use("/public/assets", express.static(__dirname + "/public/assets"));
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.set("port", PORT);
