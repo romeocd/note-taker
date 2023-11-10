@@ -44,3 +44,17 @@ app.post('/api/notes', (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+// DELETE /api/notes/:id route to delete a note
+app.delete('/api/notes/:id', (req, res) => {
+    try {
+      const newDb = db.filter((note) => note.id !== req.params.id);
+  
+      fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
+  
+      res.json(newDb);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
