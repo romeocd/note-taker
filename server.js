@@ -16,6 +16,8 @@ app.use(express.json());
 app.use("/public/assets", express.static(__dirname + "/public/assets"));
 app.use(express.urlencoded({ extended: true }));
 
+app.set("port", PORT);
+
 // GET /api/notes route
 app.get('/api/notes', (req, res) => {
     try {
